@@ -42,10 +42,20 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 .w3-modal{display:none;}
 </style>
 <script>
+var userName = '@HttpContext.Current.User.Identity.Name';			
  $(document).ready(function(){
  loadcons();loadrec();loadpacc();
  })
 
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "info.txt");
+  xhttp.send();
+}
 
 var busqueda = document.getElementById('buscar');
 buscaTabla = function(){
@@ -171,6 +181,7 @@ openp('0.8','0.9','B_INFO')
 				<div class="subnavt-content">
 				  <a href="javascript:openp('0.3','0.8','B_ESTUDIO')">ESTUDIOS JURIDICOS</a>
 				  <a href="javascript:openp('0.7','0.8','B_PACCESO')">PUNTOS DE ACCESO</a>
+				  <a href="javascript:alert(userName)">PUNTOS DE ACCESO</a>
 				</div>
 			    </div>
 				
@@ -178,7 +189,7 @@ openp('0.8','0.9','B_INFO')
 				<button class="subnavtbtn" onclick="javascript:window.open('novedades.html','_blank')"><i class="far fa-search fa-fw"></i></i>NOVEDADES</button>
 				
 			    </div>
-			
+ 
 			
 			</div>
         </nav>
