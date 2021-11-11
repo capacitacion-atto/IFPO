@@ -42,7 +42,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 .w3-modal{display:none;}
 </style>
 <script>
-var userName = '@HttpContext.Current.User.Identity.Name';			
+var userName = '<%=@HttpContext.Current.User.Identity.Name%>';			
  $(document).ready(function(){
  loadcons();loadrec();loadpacc();
  })
