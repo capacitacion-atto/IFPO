@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="js/jquery"></script>
+<script src="js/jquery-uimin"></script>
+<link rel="stylesheet" href="css/jquery-ui.css">
+
+<script type="text/javascript" src="data/consesionario"></script>
+<script type="text/javascript" src="data/reclamos"></script>
+<script type="text/javascript" src="data/puntosacceso"></script>
+<script type="text/javascript" src="data/usuarios"></script>
+
+<style>
+.fixed-header, .fixed-footer{width: 100%;position: fixed;background: #333;padding: 5px 0;color: #fff;}
+body{padding-top: 60px;padding-bottom: 40px;font-family:calibri;}
+.container{width: 95%;margin: 0 auto;}
+.fixed-header{top: 0;}
+.fixed-footer{bottom: 0;}   
+.navbart {overflow: hidden;background-color: #333;float: left;}
+.navbart a {float: left;font-size: 13px;color: white;text-align: center;padding: 14px 16px;text-decoration: none;}
+.subnavt {float: left;overflow: hidden;}
+.subnavt .subnavtbtn {font-size: 13px;border: none;outline: none;color: white;padding: 16px 11px;background-color: inherit;font-family: inherit;margin: 0;}
+.navbart a:hover, .subnavt:hover .subnavtbtn {background-color: #85929E;}
+.subnavt-content {display: none;position: absolute;left: 175px;background-color: #34495E;width: 100%;z-index: 1;}
+.subnavt-content a {float: left;color: white;text-decoration: none;}
+.subnavt-content a:hover {background-color: #eee;color: black;}
+.subnavt:hover .subnavt-content {display: block;}	
+table {border-collapse: collapse;border: 1px solid #ddd;font-size: 12px;font-family:calibri;margin-left: auto;}
+th, .Tabl td {  text-align: left;padding: 8px;}
+tr {border-bottom: 1px solid #ddd;}
+tr:nth-child(even) {background-color: #f2f2f2;}
+.header_bus{background-color:#333;color: #fff;}
+#myTable {border-collapse: collapse;border: 1px solid #ddd;font-size: 12px;font-family:calibri;margin-left: auto;}
+#myTable th, #myTable td {  text-align: left;padding: 8px;}
+#myTable tr {border-bottom: 1px solid #ddd;}
+#myTable tr.header, #myTable tr:hover {background-color: #f1f1f1;}	
+.myInput {background-image: url('imgs/search.png');background-position: 7px 7px;background-repeat: no-repeat;font-size: 16px;padding: 12px 20px 12px 40px;border: 1px solid #ddd;}
+.close {color: #aaaaaa;float: right;font-size: 28px;font-weight: bold;}
+.close:hover,.close:focus {color: #000;text-decoration: none;cursor: pointer;}
+.button {background-color: #f44336;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;}
+.buttonc {background-color: #f44336;border: none;color: white;padding: 15px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 10px;}
+.w3-modal{display:none;}
+</style>
+<script>
+ $(document).ready(function(){
+ loadcons();loadrec();loadpacc();
+ })
+
+
+var busqueda = document.getElementById('buscar');
+buscaTabla = function(){
+      texto = document.getElementById('buscar').value
+	  texto=texto.toLowerCase();
+      var r=0;
+      while(row = document.getElementById('myTable').tBodies[0].rows[r++])
+      {
+        if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
+          row.style.display = null;
+        else
+          row.style.display = 'none';
+      }
+    }
+
+    function vs(URL){ 
+   window.open(URL,"Info","width='80%',height=500,scrollbars=NO") 
+} 
+
+<!-- buscadores -->
+function openm(vent){var modal = document.getElementById(vent);modal.style.display = "block";}
+function closem(vent){var modal = document.getElementById(vent);modal.style.display = "none";}
+
+function loadcons(){
+     for (var i = 0; i < CONSE.length; i++) {
+     var newRowContent = "<tr><td>"+CONSE[i]["COD"]+"</td><td>"+CONSE[i]["EST"]+"</td><td>"+CONSE[i]["FANT"]+"</td><td>"+CONSE[i]["TIPO"]+"</td><td>"+CONSE[i]["DIR"]+"</td><td>"+CONSE[i]["LOC"]+"</td><td>"+CONSE[i]["PROV"]+"</td><td>"+CONSE[i]["CP"]+"</td><td>"+CONSE[i]["TEL"]+"</td><td>"+CONSE[i]["MAIL"]+"</td><td>"+CONSE[i]["WEB"]+"</td></tr>";
+     $(newRowContent).appendTo($("#tabl_cons"));}
+     }
+function loadpacc(){
+     for (var i = 0; i < PACCC.length; i++) {
+     var newRowContent = "<tr><td>"+PACCC[i]["A"]+"</td><td>"+PACCC[i]["B"]+"</td><td>"+PACCC[i]["C"]+"</td></tr>";
+     $(newRowContent).appendTo($("#tabl_PAC"));}
+     }
+	 
+function loadrec(){
+     for (var i = 0; i < RECLA.length; i++) {
+     var newRowContent = "<tr><td>"+RECLA[i]["COD"]+"</td><td>"+RECLA[i]["SEC"]+"</td><td>"+RECLA[i]["DESC"]+"</td><td>"+RECLA[i]["MOT"]+"</td></tr>";
+     $(newRowContent).appendTo($("#tabl_recla"));}
+     }
+
+f_consecionario = function(){texto = document.getElementById('f_cons').value;texto=texto.toLowerCase();var r=0;
+ while(row = document.getElementById('tabl_cons').tBodies[0].rows[r++])
+      {if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
+          row.style.display = null;
+        else
+          row.style.display = 'none';
+      }
+    }
+	
+f_recl = function(){texto = document.getElementById('f_recl').value;texto=texto.toLowerCase();var r=0;
+ while(row = document.getElementById('tabl_recla').tBodies[0].rows[r++])
+      {if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
+          row.style.display = null;
+        else
+          row.style.display = 'none';
+      }
+    }
+B_PAC = function(){texto = document.getElementById('f_PAC').value;texto=texto.toLowerCase();var r=0;
+ while(row = document.getElementById('tabl_PAC').tBodies[0].rows[r++])
+      {if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
+          row.style.display = null;
+        else
+          row.style.display = 'none';
+      }
+    }
+function oinfo(id){
+$('#marco_info').attr('src', 'pages/'+id+'.htm')
+openp('0.8','0.9','B_INFO')
+}
+
+	 function openp(h,w,fr,pt,fc){
+	 var Y = window.pageYOffset;
+	 var th=h.slice(0,1);var nh=h.slice(1,4);var dHeight;var dWidth
+	 var tw=w.slice(0,1);var nw=w.slice(1,4)
+	 if(th=="f"){dHeight=nh}else{var wHeight = $(window).height();dHeight = wHeight * nh;}
+	 if(tw=="f"){dWidth=nw}else{var wWidth = $(window).width();dWidth = wWidth * nw;}
+	 if(pt==""){$("#"+fr+"").dialog({resizable: false,height: dHeight,width: dWidth,modal: true, draggable: false, close: function(e){eval(fc)}})}
+	 else{$("#"+fr+"").dialog({resizable: false,height: dHeight,width: dWidth,modal: true, draggable: false, open: function(event, ui) {$(this).parent().css({'top': Y+60});}});}}
+
+
+</script>
+
+
+
+</head>
+<body style="margin-left: 0px;">
+
+<!-- <div class="header">
+  <h1>My Website</h1>
+  <p>Resize the browser window to see the effect.</p>
+</div> -->
+<div class="fixed-header">
+<a href="#" style="float:left;padding: 5px 100px 5px 5px;"><img src="images/fpo.png" style="width:72px;"></img></a>
+
+ <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="" class="sidebar-toggle" data-toggle="offcanvas" >
+            <i class="far fa-bars"></i>
+          </a>
+			  <div class="navbart">
+			   <div class="subnavt">
+				<button class="subnavtbtn"> <i class="far fa-globe fa-fw"></i>ACCESOS</button>
+				<div class="subnavt-content">
+				  <a href="https://www.planovalo.ar.ford.com/vopa" target="_blank">VOPA</a>
+				  <a href="http://mtzw12rpatp01/FordPlanOvaloWeb/" target="_blank">PATAGONIA</a>
+				
+				</div>
+			  </div>
+			  <div class="subnavt">
+				<button class="subnavtbtn"><i class="far fa-search fa-fw"></i></i>BUSCADORES</button>
+				<div class="subnavt-content">
+				  <a href="javascript:openp('0.7','0.8','B_consesionario')">CONSESIONARIOS</a>
+				  <a href="javascript:openp('0.7','0.8','B_RECLAMO')">RECLAMOS</a>
+				  <a href="BRB.html" target="_blank">RESCINDIDOS / CESE KA</a>
+				  <a href="pedidos.html" target="_blank">PEDIDOS</a>
+				  
+				  
+		
+				</div>
+			  </div>
+			    <div class="subnavt">
+				<button class="subnavtbtn"><i class="far fa-search fa-fw"></i></i>INFO UTIL</button>
+				<div class="subnavt-content">
+				  <a href="javascript:openp('0.3','0.8','B_ESTUDIO')">ESTUDIOS JURIDICOS</a>
+				  <a href="javascript:openp('0.7','0.8','B_PACCESO')">PUNTOS DE ACCESO</a>
+				</div>
+			    </div>
+				
+				<div class="subnavt">
+				<button class="subnavtbtn" onclick="javascript:window.open('novedades.html','_blank')"><i class="far fa-search fa-fw"></i></i>NOVEDADES</button>
+				
+			    </div>
+			
+			
+			</div>
+        </nav>
+<nav class="navbar navbar-static-top" role="navigation" style="float:right;">
+<div class="navbart">
+			   <div class="subnavt">
+				<button class="subnavtbtn" style="padding:2px 5px"><img src="images/user.svg" style="width:40px;"></button>
+				<div class="subnavt-content" style="left:80%"> 
+				  <a href="javascript:openp('0.3','0.8','P_DATOS')">MIS DATOS</a>
+				  <a href="javascript:openp('0.3','0.8','P_METRICAS')">METRICAS</a>
+				  <a href="javascript:openp('0.3','0.8','P_BREAK	')">BREAK</a>
+				
+				</div>
+			  </div>
+ </div>
+ </nav>
+</div>
+
+<div class="container">
+<div style="width:80%;	float:right;padding: 9px 5px 5px 0px;"><input type="text" id="buscar"  class="myInput" style="width:95%;" onkeyup="buscaTabla()" placeholder="BUSCAR"></div>
+<div>
+<table style="width:80%">
+<thead>
+<tr class="header_bus"><th width="3%">ID</th><th width="5%">CATEGORIA</th><th>NOMBRE SCRIPT</th><th>MOTIVO</th></tr></thead>
+<tbody></table>
+</div>
+<div style="width:100%; height:450px; overflow:auto;">
+<table id="myTable" style="width:80%">
+<tr><td>1</td><td>VOPA</td><td><a href="javascript:oinfo('vopa-1')">Acceso / ¿Cómo me registro?</a></td><td>Requisitos , propcedimiento de registro en front</td></tr>
+<tr><td>2</td><td>VOPA</td><td><a href="javascript:oinfo('vopa-2')">Olvide mi Clave</a></td><td>Procedimiento para reestablecer clave</td></tr>
+<tr><td>3</td><td>AS400</td><td><a href="javascript:oinfo('id3')">¿Cómo modifico el email del sistema?</a></td><td>Modificacion de mail en AS400</td></tr>
+<tr><td>4</td><td>AS400</td><td><a href="javascript:oinfo('id4')">Modificación de datos personales</a></td><td>Procedimiento para modificar datos personales en as400</td></tr>
+<tr><td>5</td><td>VOPA</td><td><a href="javascript:oinfo('id5')">Generación manual de cupones</a></td><td>Procedimiento para generar cupon de pago mediante la web</td></tr>
+<tr><td>6</td><td>AS400</td><td><a href="javascript:oinfo('id6')">Generación manual de cupones</a></td><td>Procedimiento para publicar deuda en as400</td></tr>
+<tr><td>7</td><td>AS400</td><td><a href="javascript:oinfo('id7')">Consulta de publicaciones</a></td><td>Procedimiento para consultar publicaciones realizadas</td></tr>
+<tr><td>8</td><td>GESTION</td><td><a href="javascript:oinfo('id8')">Cautelares</a></td><td>Informacion y procedimiento para gesion de clientes con cautelar / consulta historial cautelares en as400</td></tr>
+<tr><td>9</td><td>GESTION</td><td><a href="javascript:oinfo('id9')">Cambio de concesionario</a></td><td>Procedimiento e informacion para cambio de concesionario</td></tr>
+<tr><td>10</td><td>GESTION</td><td><a href="javascript:oinfo('id10')">Seguro de vida</a></td><td>Informacion sobre seguro de vida y denuncia de siniestro</td></tr>
+<tr><td>11</td><td>GESTION</td><td><a href="javascript:oinfo('id11')">Devoluciones de Fondos | Transferencias</a></td><td>Requisitos: Personas físicas , Personas jurídicas , Art 10 o siniestros vida</td></tr>
+<tr><td>12</td><td>GESTION</td><td><a href="javascript:oinfo('id12')">Devoluciones de Fondos | Transferencias</a></td><td>NO carga de CBU en VOPA</td></tr>
+<tr><td>13</td><td>GESTION</td><td><a href="javascript:oinfo('id13')">Devoluciones de Fondos | Transferencias</a></td><td>VOPA | CBU propio</td></tr>
+<tr><td>14</td><td>GESTION</td><td><a href="javascript:oinfo('id14')">Devoluciones de Fondos | Transferencias</a></td><td>VOPA | NO Propio</td></tr>
+<tr><td>15</td><td>GESTION</td><td><a href="javascript:oinfo('id15')">Devoluciones de Fondos | Transferencias</a></td><td>Cronograma de pagos </td></tr>
+<tr><td>16</td><td>GESTION</td><td><a href="javascript:oinfo('id16')">Devoluciones de Fondos | Transferencias</a></td><td>Estado de transferencia</td></tr>
+<tr><td>17</td><td>GESTION</td><td><a href="javascript:oinfo('id17')">Concesionarios | Condiciones comerciales, reclamo del cliente</a></td><td></td></tr>
+<tr><td>18</td><td>GESTION</td><td><a href="javascript:oinfo('id18')">Ecosport</a></td><td></td></tr>
+<tr><td>19</td><td>AS400</td><td><a href="javascript:oinfo('id19')">Estado de Cuenta | Consulta</a></td><td>Consulta de Adherentes,cliente al dia, cliente en mora,Cauteler,Resol 14/20</td></tr>
+<tr><td>20</td><td>AS400</td><td><a href="javascript:oinfo('id20')">Estado de Cuenta | Pago Fuera de termino</a></td><td>Pago fuera de termino , publicacion de deuda</td></tr>
+<tr><td>21</td><td>AS400</td><td><a href="javascript:oinfo('id21')">Estado de Cuenta | Consulta de pagos</a></td><td>Consulta de recibos , estado de pagos en as400</td></tr>
+<tr><td>22</td><td>AS400</td><td><a href="javascript:oinfo('id22')">Estado de Cuenta | Recupero diferimiento IGJ Resol 14</a></td><td>Recupero de Diferimiento | IGJ Resol 14</td></tr>
+<tr><td>23</td><td>AS400</td><td><a href="javascript:oinfo('id23')">Estado de Cuenta | Saldos a Favor</a></td><td>Saldos a Favor en cuenta</td></tr>
+<tr><td>24</td><td>AS400</td><td><a href="javascript:oinfo('id24')">Estado de Cuenta | Devoluciones de pagos o exedentes de cuenta corriente</a></td><td>Devoluciones de pagos o exedentes de cuenta corriente,tarjeta de credito, reversion, RA, RT,DJ</td></tr>
+<tr><td>25</td><td>AS400</td><td><a href="javascript:oinfo('id25')">Estado de Cuenta | Cupones emitidos</a></td><td>Consulta de cupones emitidos</td></tr>
+<tr><td>26</td><td>AS400</td><td><a href="javascript:oinfo('id26')">Deuda no Exigible | Detalle</a></td><td></td></tr>
+<tr><td>27</td><td>AS400</td><td><a href="javascript:oinfo('id27')">Deuda no Exigible | Calculadora de adelanto de cuota</a></td><td></td></tr>
+<tr><td>28</td><td>VOPA</td><td><a href="javascript:oinfo('id28')">Consulta de saldos en web</a></td><td></td></tr>
+<tr><td>29</td><td>GESTION</td><td><a href="javascript:oinfo('id29')">Medios de Pago | Sin cupon</a></td><td></td></tr>
+<tr><td>30</td><td>GESTION</td><td><a href="javascript:oinfo('id30')">Medios de Pago | Online</a></td><td></td></tr>
+<tr><td>31</td><td>GESTION</td><td><a href="javascript:oinfo('id31')">Medios de Pago | Con cupon impreso</a></td><td></td></tr>
+<tr><td>32</td><td>GESTION</td><td><a href="javascript:oinfo('id32')">Medios de Pago | Debito Automatico</a></td><td>Alta, Consulta , Baja</td></tr>
+<tr><td>33</td><td>VOPA</td><td><a href="javascript:oinfo('id33')">Medios de Pago | Pago WEB paso a paso</a></td><td>Como abonar mediante web PO</td></tr>
+<tr><td>34</td><td>VOPA</td><td><a href="javascript:oinfo('id34')">Medios de Pago | Plazo de acreditacion</a></td><td></td></tr>
+<tr><td>35</td><td>GESTION</td><td><a href="javascript:oinfo('id35')">Plan revancha</a></td><td></td></tr>
+
+
+
+<tr><td>24</td><td>GESTION</td><td><a href="javascript:oinfo('id24')">Ecosport</a></td><td></td></tr>
+
+
+
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="fixed-footer">
+<div class="container">Copyright &copy; 2021 @W</div>   
+</div>
+
+
+<!--**************************DIV INFO*******************************************-->
+<div id="B_INFO" title="INFORMACION" class="w3-modal">
+	<div class="modal-content1">
+	   	<iframe id="marco_info" style="width:99%;height:72vh;"></iframe>		
+	</div>
+</div>
+<!-- BUSCADORES -->
+ <!--**************************DIV consesionario*******************************************-->
+
+<div id="B_consesionario" title="BUSQUEDA DE CONSESIONARIOS" class="w3-modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div style="width:100%;"><input type="text" id="f_cons"  class="myInput" style="width:94%" onkeyup="f_consecionario()" placeholder="BUSCAR"></div>
+	<div style="width:100%; height:345px; overflow:auto;">
+		<table id="tabl_cons" style="width:100%" class="tabl">
+		<thead>
+		<tr class="header_bus"><th width="3%">ID</th><th width="3%">ESTADO</th><th>NOMBRE</th><th>TIPO</th><th>DIRECCION</th><th>LOCALIDAD</th><th>PROVINCIA</th><th>CP</th><th>TEL</th><th>MAIL</th><th>WEB</th></tr></thead>
+		<tbody>
+		</tbody>
+		</table>
+	</div>
+  </div>
+</DIV>
+
+
+
+   <!--**************************DIV reclamos*******************************************-->
+<div id="B_RECLAMO" title="BUSQUEDA DE CODIGOS DE RECLAMO" class="w3-modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div style="width:100%;"><input type="text" id="f_recl"  class="myInput" onkeyup="f_recl()" placeholder="BUSCAR" style="width:94%;"></div>
+	<div style="width:100%; height:345px; overflow:auto;">
+		<table id="tabl_recla" style="width:100%">
+		<thead>
+		<tr class="header_bus"><th width="5%">COD</th><th width="15%">SECTOR</th><th width="30%">DESCRIPCION</th><th width="50%">MOTIVO</th></tr></thead>
+		<tbody>
+		</tbody>
+	</table>
+	</div>
+  </div>
+</div>
+   <!--**************************DIV PUNTOS DE ACCESO*******************************************-->
+<div id="B_PACCESO" title="BUSQUEDA DE PUNTOS DE ACCESO" class="w3-modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div style="width:100%;"><input type="text" id="f_PAC"  class="myInput" onkeyup="B_PAC()" placeholder="BUSCAR" style="width:94%;"></div>
+	<div style="width:100%; height:372px; overflow:auto;">
+		<table id="tabl_PAC" style="width:100%">
+		<thead>
+		<tr class="header_bus"><th width="3%">P. ACC</th><th width="10%">NOMBRE PUNTO</th><th width="30%">DETALLE</th></tr></thead>
+		<tbody>
+		</tbody>
+	</table>
+	</div>
+  </div>
+</div>
+ <!--**************************DIV estudios*******************************************-->
+<div id="B_ESTUDIO" title="ESTUDIOS JURIDICOS" class="w3-modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    	<div>
+		<table id="tabl_est" style="width:100%" class="tabl">
+		<thead>
+		<tr class="header_bus"><th width="20%">ESTUDIO</th><th width="20%">TELEFONO</th><th width="20%">WHATSAPP</th><th width="20%">DIRECCION</th><th>MAIL</th></tr></thead>
+		<tbody>
+		<tr><td>Rivas Orozco</td><td>(011) 4811-0723</td><td>(011) 6759 5564</td><td>Rodríguez Peña 832 </td><td>admin.legales@rivasorozco.com.ar </td></tr>
+		<tr><td>Mollard</td><td>(011) 4524-5467</td><td>(011) 3884 7127</td><td>Andonaegui Nº 2170, PB "B"</td><td>alejandrojosemollard@fibertel.com.ar</td></tr>
+		<tr><td>Lehmann</td><td>(011) 4375-1375/6 </td><td>(011) 5854 8478</td><td>Tucuman 1650 piso 2° "F"</td><td>duna@lmdld.com.ar ; madeof@lmdld.com.ar</td></tr>
+		<tr><td>Carbo Bronenberg</td><td>(011) 5235-6610 al 16</td><td>(011) 4992 3373</td><td>25 de Mayo 277 3° piso</td><td>martincarbo@cbvp.com.ar ; cmbronenberg@cbvp.com.ar</td></tr>
+		</tbody>
+	
+	</table>
+	</div>
+  </div>
+
+</div>
+<!-- ********************************************* MIS DATOS ***************************************************** -->
+<div id="P_DATOS" title="MIS DATOS" class="w3-modal">
+    <div class="modal-content">
+    	<table id="tabl_est" style="width:100%" class="tabl">
+		<tr><td>ASESOR</td><td></td></tr>
+		<tr><td>ID</td><td></td></tr>
+		<tr><td>SUPERVISOR</td><td></td></tr>
+		<tr><td>USUARIO</td><td></td></tr>
+		<tr><td>VOPA</td><td></td></tr>
+		<tr><td>AS400</td><td></td></tr>
+		</table>
+		
+  </div>
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<html>
+<head>
+<script src="js/jquery"></script>
+<script type="text/javascript" src="data/pedidos"></script>
+<style>
+
+.myInput { font-size: 29px;font-weight:bold;padding: 5px 10px 5px 10px;border: 1px solid #ddd;}
+.fixed-header, .fixed-footer{width: 100%;position: fixed;background: #333;padding: 5px 0;color: #fff;}
+body{padding-top: 60px;padding-bottom: 40px;font-family:calibri;}
+.container{width: 95%;margin: 0 auto;}
+.fixed-header{top: 0;}
+.fixed-footer{bottom: 0;}   
+.button {border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;}
+table{font-family: Arial, Helvetica, sans-serif;border-collapse: collapse;width: 100%;font-size:11px}
+table td, table th {border: 1px solid #ddd;padding: 8px;}
+table tr:nth-child(even){background-color: #f2f2f2;}
+table tr:hover {background-color: #ddd;}
+table th {padding-top: 12px;padding-bottom: 12px;text-align: left;background-color: #04AA6D;  color: white;
+
+}
+</style>
+<script>
+ $(document).ready(function(){
+ 
+ })
+ 
+ function resett(){
+ $("#txtb1").val("")
+ $("#txtb2").val("")
+ $("#txtb1").prop("disabled",false);
+ $("#txtb2").prop("disabled",false);
+ $("#bu1").prop("disabled",false)
+ $("#bu2").prop("disabled",true)
+ $("#txtb1").focus();
+ $("#1a").html("")
+ $("#2a").html("")
+ $("#3a").html("")
+ $("#4a").html("")
+ $("#5a").html("")
+ $("#6a").html("")
+ $("#7a").html("")
+ $("#8a").html("")
+ 
+ }
+ function filtrot(){
+    var bb="";var ba="";var bo;var bd;
+		bb=$("#txtb1").val()
+		ba=$("#txtb2").val()
+		var uf=BP.filter(function (el){
+		a1=el.M;a2=el.N;
+		if(bb==a1 && ba==a2){return el.A}})
+		 if (uf.length>0){
+		 
+		 $("#1a").html(uf[0]["M"])
+		 $("#2a").html(uf[0]["N"])
+		 $("#3a").html(uf[0]["T"])
+		 $("#4a").html(uf[0]["P"])
+		 $("#5a").html(uf[0]["V"])
+		 $("#6a").html(uf[0]["W"])
+		 if (uf[0]["W"]=="Facturable"){$("#7a").html(uf[0]["X"])}else{$("#7a").html("Verificar Status en AS400 | CUB 72 | AvPg | F8 (Status). Tomar en cuenta el modelo pedido, verificar de acuerdo al status")}
+		 $("#8a").html(uf[0]["A"])
+		 $("#txtb1").prop("disabled",true);
+		 $("#txtb2").prop("disabled",true);
+		 $("#bu1").prop("disabled",true)
+		 $("#bu2").prop("disabled",false)
+}
+else{alert("Grupo y Orden no encontrado, verificar");resett()}
+}
+
+	 
+ 
+</script>
+</head>
+<body style="margin-left: 0px;">
+<div class="fixed-header">
+<div style="position:relative;float:left;height:65px;width:25%;background-color:#333;color:white;"><p style="font-size: 1.1em;font-weight: bold;margin: auto;padding:6px 74px 4px 64px;">Status Pedido</p><p style="font-size: 1em;font-weight: bold;margin: auto;padding:0px 0px 0px 62px">Noviembre 21</p></div>
+<div style="position:relative;float:left;width:20%;padding: 9px 0px 5px 5px;"><input type="text" id="txtb1"  class="myInput" placeholder="GRUPO" style="width:59%;text-align: center" maxlength=5><input type="text" id="txtb2"  class="myInput" placeholder="ORD" maxlength=3 style="width:40%;text-align: center"></div>
+<div style="position:relative;float:left;width:25%;padding: 9px 5px 5px 0px;"><button class="button" id="bu1" style="background-color: #04aa3f" onclick="filtrot()">BUSCAR</button><button class="button" style="background-color: #f44336" id="bu2" onclick="resett()">RESET</button></div>
+</div>
+
+</div>
+
+<div class="container">
+<div style="margin-top: 30px;width: 35%;float:left;">
+<table>
+<tr><td style="width:25%">GRUPO</td><td id="1a" class="ti"></td></tr>
+<tr><td>ORDEN</td><td id="2a" class="ti"></td></tr>
+<tr><td>MODELO</td><td id="3a" class="ti"></td></tr>
+<tr><td>CATALOGO</td><td id="4a" class="ti"></td></tr>
+<tr><td>TITULAR</td><td id="5a" class="ti"></td></tr>
+<tr><td>ESTADO</td><td id="6a" class="ti"></td></tr>
+<tr><td>INFORMAR AL CLIENTE</td><td id="7a" class="ti"></td></tr>
+<tr><td>STATUS</td><td id="8a" class="ti"></td></tr>
+</table>
+</div>
+<div style="margin-top: 30px;width: 60%;float:right;">
+<table>
+<thead><th>MODELO</th><th>STATUS</th><th>MENSAJE</th></thead>
+<tr><td>Ecosport</td><td>10 a 37</td><td>Tu unidad se encuentra producida y estimamos que como máximo se estaría facturando en 90 días. Cabe destacar que dicho plazo es meramente estimativo y no comprende las eventuales demoras que pudieran existir producto de los trámites aduaneros en los vehículos importados. Cuando esté facturado vas a recibir un email con el importe a abonar en concepto de gastos de entrega y diferencia de modelo en caso que hayas pedido una unidad diferente a la de tu plan</td></tr>
+<tr><td>Ranger</td><td>32 a 45</td><td>Estimamos que tu Ford se facturará durante este mes. Cuando esté facturado vas a recibir un email con el importe a abonar en concepto de gastos de entrega y diferencia de modelo en caso que hayas pedido una unidad diferente a la de tu plan. Aguardá a ser contactado por el concesionario para iniciar los trámites de patentamiento</td></tr>
+<tr><td>Ranger</td><td>inferior a 32</td><td>Tu unidad se encuentra actualmente en proceso de producción y estimamos un plazo máximo para la facturación de 90 días contados desde el primer día del corriente mes. Cabe destacar que dicho plazo es meramente estimativo y no comprende las eventuales demoras que pudieran existir producto de los trámites aduaneros. Cuando esté facturado vas a recibir un email con el importe a abonar en concepto de gastos de entrega y diferencia de modelo en caso que hayas pedido una unidad diferente a la de tu plan</td></tr>
+<tr><td>Territory</td><td>39 en adelante</td><td>Tu unidad se encuentra producida y estimamos que como máximo se estaría facturando en 60 días. Cabe destacar que dicho plazo es meramente estimativo y no comprende las eventuales demoras que pudieran existir producto de los trámites aduaneros en los vehículos importados. Cuando esté facturado vas a recibir un email con el importe a abonar en concepto de gastos de entrega y diferencia de modelo en caso que hayas pedido una unidad diferente a la de tu plan</td></tr>
+<tr><td>Territory</td><td>hasta 37 inclusive</td><td>Tu unidad se encuentra actualmente en proceso de producción y estimamos un plazo máximo para la facturación de 90 días contados desde el primer día del corriente mes. Cabe destacar que dicho plazo es meramente estimativo y no comprende las eventuales demoras que pudieran existir producto de los trámites aduaneros. Cuando esté facturado vas a recibir un email con el importe a abonar en concepto de gastos de entrega y diferencia de modelo en caso que hayas pedido una unidad diferente a la de tu plan</td></tr>
+</table>
+</div>
+
+</div>
+
+<div class="fixed-footer">
+        <div class="container">Copyright &copy; 2021 @W</div>        
+</div>
+</body>
+</html>

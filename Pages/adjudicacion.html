@@ -1,0 +1,237 @@
+<html>
+<head>
+<link rel="stylesheet" href="../css/pages.css">
+<script src="../js/jquery.js"></script>
+<script>
+$(function(){
+
+    $('input[type="text"]').keyup(function(){
+        
+        var searchText = $(this).val();
+        
+        $('ul > li').each(function(){
+            
+            var currentLiText = $(this).text(),
+                showCurrentLi = currentLiText.indexOf(searchText) !== -1;
+            
+            $(this).toggle(showCurrentLi);
+            
+        });     
+    });
+
+});
+</script>
+</head>
+<body>
+<div class="fixed-header">
+<input id="buscar" type="text" class="form-control" placeholder="BUSCAR..." style="width:100%;height:40px;font-family:calibri;font-size:30px;background-image: url('imgs/search.png');background-position: 8px 8px;  background-repeat: no-repeat;padding: 0px 0px 0px 45px"/>
+</div>
+<div class="container">
+<fieldset>	
+			<legend class="sub">ADJUDICACION</legend>
+<fieldset>	
+			<legend class="sub">Generalidades</legend>
+<ul>
+	<li><span class="tit">&iquest;Qu&eacute; es?</span></span>
+		<ul>
+			<li>Es una celebraci&oacute;n publica de libre acceso que se realiza ante escribano p&uacute;blico en la que, mediante un bolillero, se extraen los ordenes del sorteo y se realiza la apertura de las ofertas de licitaci&oacute;n.&nbsp;</li>
+			<li>Los primeros d&iacute;as del mes publicamos en el diario CLAR&Iacute;N el llamado al acto de sorteo y licitaci&oacute;n, indicando lugar, fecha y horario de realizaci&oacute;n. Esta informaci&oacute;n se encuentra disponible en la p&aacute;gina web de Plan Ovalo y se informa en el cup&oacute;n de pago.</li>
+		</ul>
+	</li>
+	<li><span class="tit">&iquest;Qui&eacute;nes pueden resultar ganadores?</span>
+		<ul>
+			<li>Todos los clientes cuyo plan es ahorrista y se encuentran al d&iacute;a con el pago de sus cuotas&nbsp;</li>
+		</ul>
+	</li>
+	<li><span class="tit">&iquest;Cu&aacute;ntas unidades se adjudican por grupo?</span>
+
+		<ul>
+			<li>La cantidad de unidades que tiene un grupo depende de los fondos recaudados por el mismo hasta el &uacute;ltimo d&iacute;a del mes anterior y se informa mensualmente en la &ldquo;Carta de unidades&rdquo;. Art. 7 CGC</li>
+			<li>Lo habitual es que tengan 2 unidades: la primera SIEMPRE se asigna para el sorteo y la segunda a licitaci&oacute;n</li>
+			<li>En caso que los ingresos no alcancen para comprar una unidad, quedar&aacute;n en el fondo del grupo y se sumar&aacute;n a los recaudados el mes siguiente</li>
+		</ul>
+	</li>
+		
+	<li><span class="tit">&iquest;Qu&eacute; es el sorteo?</span>
+
+		<ul>
+			<li>Es la extracci&oacute;n de las bolillas cuya cantidad ser&aacute; la de los integrantes del grupo (84 cuotas, 168 bolillas): para cada bolilla se determinar&aacute; un orden de extracci&oacute;n, por ejemplo: Bolilla 70, orden 1 =&gt; ganador por sorteo!</li>
+			<li>Este orden de extracci&oacute;n se llama &ldquo;grilla&rdquo; y determinar&aacute; los ganadores por sorteo, reemplazos y definir&aacute; un empate en las ofertas de licitaci&oacute;n.</li>
+			<li>Si no hubiera ofertas de licitaci&oacute;n, la bolilla siguiente de la grilla ser&aacute; la ganadora por &ldquo;licitaci&oacute;n desierta&rdquo;</li>
+		</ul>
+	</li>
+		
+	<li><span class="tit">&iquest;Qu&eacute; es la licitaci&oacute;n?</span>
+
+		<ul>
+			<li>Es la oferta de una suma de dinero que puede presentar cualquiera de los ahorristas de un grupo que est&eacute;n dentro de la carta de unidades. El m&iacute;nimo es una al&iacute;cuota y el m&aacute;ximo el saldo de cancelaci&oacute;n del plan</li>
+			<li>Las mismas se presentan &ldquo;a sobre cerrado&rdquo; y se abren ante escribano p&uacute;blico en el acto de adjudicaci&oacute;n</li>
+			<li>El ganador por licitaci&oacute;n ser&aacute; el que tenga la oferta m&aacute;s alta de su grupo; en caso de empate, la bolilla m&aacute;s alta de la grilla ser&aacute; la oferta ganadora.</li>
+		</ul>
+	</li>
+</ul>
+</fieldset>
+<fieldset>	
+			<legend class="sub">¿Como licitar?</legend>
+<ul>
+	<li><span class="tit">&iquest;C&oacute;mo puedo licitar?</span>
+
+		<ul>
+			<li><span class="imp">Cheque</span>
+
+				<ul>
+					<li>El cliente presenta un sobre cerrado con la oferta correspondiente al que agrega el cheque que debe estar emitido por el importe que quiera ofertar, fechado con el d&iacute;a del acto, a favor de &ldquo;Plan Ovalo S. A. de ahorro NO A LA ORDEN&rdquo; y debe estar firmado.&nbsp;</li>
+					<li>Este proceso se encuentra discontinuado por la pandemia y se reemplazo con el env&iacute;o de la oferta al escribano publico (<a href="https://www.planovalo.com.ar/ovalo/Informacion/miguensalbertom@gmail.com">miguensalbertom@gmail.com</a>): en caso de resultar ganador, se le requerir&aacute; que transfiera el importe de la oferta al CBU que se le informe por mail.</li>
+				</ul>
+			</li>
+			<li><span class="imp">Compromiso irrevocable</span>
+
+				<ul>
+					<li>Son las ofertas que recibimos por medio de los concesionarios a los cuales acuden los clientes que no tienen cheque o que no pueden acceder a cualquiera de las otras modalidades.&nbsp;</li>
+					<li>El concesionario recibir&aacute; el dinero de la oferta del cliente, carga la misma en el sistema y, de resultar ganadora, deber&aacute; integrar los fondos a POSA</li>
+				</ul>
+			</li>
+			<li><span class="imp">Licitaci&oacute;n Digital</span>
+
+				<ul>
+					<li>El cliente podr&aacute; cargar la oferta en nuestra web y elegir el medio por el cual la efectivizar&aacute;: DEBIN o transferencia bancaria.&nbsp;</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+		
+	<li><span class="tit">&iquest;C&oacute;mo me entero si gan&eacute;?</span>
+
+		<ul>
+			<li>Ganador por sorteo o licitaci&oacute;n desierta : Se le env&iacute;a al cliente un email informando que result&oacute; ganador por sorteo y el plazo hasta el cual tendr&aacute; para aceptar la misma ingresando en la web</li>
+			<li>Ganador por licitaci&oacute;n : Se lo notificar&aacute; de que fue ganador y requerir&aacute; que complete el DEBIN o bien realice la transferencia dentro de las pr&oacute;ximos 3 d&iacute;as h&aacute;biles. No es necesario que acepte</li>
+		</ul>
+	</li>
+		
+	<li><span class="tit">&iquest;Qu&eacute; pasa si no acepto o no acredito la oferta?</span>
+
+		<ul>
+			<li>Ganador por sorteo o licitaci&oacute;n desierta
+
+				<ul>
+					<li>El cliente tiene aproximadamente 7 d&iacute;as corridos para enviarnos su aceptaci&oacute;n. Si no acepta, puede aguardar a salir sorteado nuevamente o bien presentar una oferta de licitaci&oacute;n en el acto siguiente</li>
+					<li>En caso de no aceptar, la unidad se asignar&aacute; a la bolilla siguiente en un proceso conocido como &ldquo;Reemplazos&rdquo;. Se repetir&aacute; la notificaci&oacute;n por mail e indicar&aacute; el plazo m&aacute;ximo.</li>
+				</ul>
+			</li>
+			<li>Ganador por licitaci&oacute;n reemplazo : De no integrar la oferta al momento en el cual se le requiri&oacute;, se le otorgar&aacute; la adjudicaci&oacute;n a la oferta siguiente; el proceso se llama &ldquo;Reemplazo de licitaci&oacute;n&rdquo;. Se lo notificar&aacute; por mail e indicar&aacute;n los plazos en los cuales debe efectivizar el pago.</li>
+		</ul>
+	</li>
+</ul>
+</fieldset>
+<fieldset>	
+			<legend class="sub">Bajas de Adjudicacion</legend>
+		
+	<li><span class="tit">&iquest;Qu&eacute; sucede despu&eacute;s de aceptar la adjudicaci&oacute;n o ganar la licitaci&oacute;n?</span>
+		<ol>
+	<li>Para los planes que tienen al&iacute;cuota reducida, deber&aacute; integrar en % no financiado en el plan: operativamente, se llama al&iacute;cuota extraordinaria y es el % sobre el VM + el recupero del impuesto a los d&eacute;bitos cr&eacute;ditos bancarios.</li>
+	<li>En caso de requerirse, deber&aacute; abonar la integraci&oacute;n m&iacute;nima que es el m&iacute;nimo de cuotas pagas que debe tener el cliente al momento del retiro de la unidad. Este punto est&aacute; sujeto a las condiciones comerciales de venta del plan.&nbsp;</li>
+	<li>El cliente deber&aacute; aprobar los requisitos crediticios que se determinar&aacute;n en funci&oacute;n de su conducta de pago y la deuda que tenga a vencer: se establecen diferentes c&oacute;digos crediticios que indican qu&eacute; aval deber&aacute; presentar el cliente, por ejemplo, buen veraz o un garante o aval.</li>
+	<li>Si el cliente est&aacute; dentro de una medida cautelar colectiva deber&aacute; enviar una nota en la que preste conformidad para la baja a cliente2@ford.com . La misma se encuentra disponible en <a href="https://www.planovalo.com.ar/ovalo/Informacion/FormulariosDescargables">https://www.planovalo.com.ar/ovalo/Informacion/FormulariosDescargables</a></li>
+	<li>Una vez cumplidos los puntos 1, 2, 3 y 4 (seg&uacute;n corresponda), podr&aacute; ingresar el pedido. <u>Para cumplir con el proceso detallado, el cliente tendr&aacute; 60 d&iacute;as.</u></li>
+</ol>
+	<p>Si el cliente incumple, a fin de mes en el que se cumplen los 60 días se procesará la baja de la adjudicación por falta de ingreso de pedido, el cliente volverá a ser ahorrista y participará nuevamente del acto de adjudicación. 
+</p>
+	
+	</li>	
+</ul>
+</fieldset>	
+</fieldset>
+<fieldset>	
+			<legend class="sub">REQUISITOS CREDITICIOS</legend>
+<ul>
+	<li>Para cada cliente se determinar&aacute; en funci&oacute;n a las cuotas pagas y la conducta en el pago de sus cuotas un c&oacute;digo en el sistema mediante el cual se definir&aacute; qu&eacute; documentaci&oacute;n debe presentar el cliente al concesionario, a saber:
+
+		<ul>
+			<li><span class="imp">5N: Deuda mayor al 70% del valor del veh&iacute;culo</span>
+
+				<ul>
+					<li>El titular debe presentar una demostraci&oacute;n de ingresos superior a 4 al&iacute;cuotas + exigencia mensual informada por Veraz (se verifica en el &aacute;rea)</li>
+					<li>El titular puede acreditar ingresos sumando a miembros del grupo familiar: uno de los padres, un hijo o el c&oacute;nyuge, acreditando parentesco</li>
+					<li>En caso de presentar codeudor, ambos tienen que tener buen Veraz</li>
+				</ul>
+			</li>
+			<li><span class="imp">4N: Deuda mayor al 50% y menor al 70% del valor del veh&iacute;culo</span>
+				<br>
+
+				<ul>
+					<li>Existen 2 opciones
+
+						<ul>
+							<li>Presentar un codeudor cuya demostraci&oacute;n de ingresos cubra 3 al&iacute;cuotas y tenga buen Veraz</li>
+							<li>1.El titular puede presentar ingresos por 3 al&iacute;cuotas + exigencia mensual informada por Veraz (se verifica en el &aacute;rea) y el codeudor debe enviar copia de DNI y tener buen Veraz</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><span class="imp">0N: Deuda hasta el 50% del valor del veh&iacute;culo</span>
+				<br>
+
+				<ul>
+					<li>El titular debe tener buen Veraz </li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><span class="tit">Requisitos de la documentaci&oacute;n</span>
+		<br>
+
+		<ul>
+			<li><span class="imp">Demostraci&oacute;n de ingresos</span>
+
+				<ul>
+					<li>Recibo de sueldo: solo se tomar&aacute;n los ingresos brutos, exceptuando SAC y horas extras</li>
+					<li>Certificaci&oacute;n de ingresos: debe informar la actividad, ser de los &uacute;ltimos 6 meses y estar certificado por el Colegio Profesional de Ciencias Econ&oacute;micas</li>
+					<li>Formulario 711: debe contener nombre, apellido, DNI/CUIL</li>
+					<li>Comprobante Monotributo: comprobante de alta en la que se visualice la categor&iacute;a + ultimo recibo de pago. Se tomar&aacute; el tope de ingresos brutos de la categor&iacute;a que fuera determinado por AFIP</li>
+				</ul>
+			</li>
+			<li><span class="imp">Veraz</span>
+				<br>
+
+				<ul>
+					<li>Se analiza el comportamiento de pago de los &uacute;ltimos 24 meses: si tuviera atrasos graves con alguna entidad financiera podr&iacute;a ser considerado mal Veraz sin tener en cuenta que no posee deudas en la actualidad</li>
+				</ul>
+			</li>
+			<li><span class="imp">Deber&aacute; enviar el Anexo 2 firmado por el cliente</span>
+				<br>Una vez aprobados los requisitos crediticios el cliente estar&aacute; en condici&oacute;n de ingresar el pedido de la unidad </li>
+		</ul>
+	</li>
+	</ul>
+</fieldset>
+<fieldset>	
+			<legend class="sub">INGRESO DE PEDIDO</legend>
+			</ul>
+	<li>El ingreso del pedido de la unidad deber&aacute; realizarlo en el concesionario asignado. En caso de ser una solicitud vendida por Venta Directa, el cliente podr&aacute; optar por el concesionario m&aacute;s cercano contact&aacute;ndose con Atenci&oacute;n al Cliente.</li>
+	<li>Para poder ingresar el pedido, el cliente podr&aacute; optar por cualquiera de las unidades que mensualmente se informan dentro de la Circular &ldquo;Disponibilidad de modelos&rdquo; en la cual se informan cu&aacute;les modelos comercializados por Ford Argentina podr&aacute; optar el cliente</li>
+	<li>El concesionario cargar&aacute; el pedido en el sistema VO, tomando en cuenta el cat&aacute;logo de la unidad que quiera solicitar y las 3 opciones de colores disponibles. Una vez ingresado, le entregar&aacute; al cliente la &ldquo;Carta de Pedido&rdquo; en la cual constan las condiciones del mismo. Validar&aacute; y cargar&aacute; los datos para que la unidad sea facturada junto con la condici&oacute;n fiscal bajo la cual se emitir&aacute; la factura del bien solicitado</li>
+	<li>Una vez procesado, se le asignar&aacute; una unidad de acuerdo a la disponibilidad de modelos de FoA. En caso que el cliente nos contacte, podremos informar la fecha probable de facturaci&oacute;n.</li>
+	<li>Dependiendo de la unidad que solicite el plazo legal estipulado es el siguiente:
+
+		<ul>
+			<li>Misma unidad del plan, 75 d&iacute;as</li>
+			<li>Si difiere, 135 d&iacute;as</li>
+			<li>En caso que la administradora se exceda de estos plazos, deber&aacute; abonar al cliente los correspondientes &ldquo;Intereses resarcitorios por demora en la entrega&rdquo; tomando en cuenta como punto de partida el ingreso del pedido, el plazo legal y la fecha de entrega de la misma, por ejemplo:
+
+				<ul>
+					<li>Fecha de ingreso de pedido: 1/3/21. Misma unidad del plan. Fecha de entrega: 23/8/21</li>
+					<li>oQ d&iacute;as pedido/entrega, 175 &ndash; plazo legal (75): 100 d&iacute;as =&gt; tomando en cuenta el VM de la unidad retirada al momento de la facturaci&oacute;n siendo la Tasa de Inter&eacute;s la Activa de BNA para operaciones comerciales se determinar&aacute; el importe a abonar al cliente</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+</fieldset>
+
+
+
+
+
+
+</div>
+</body>
+</html>

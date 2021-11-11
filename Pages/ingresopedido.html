@@ -1,0 +1,65 @@
+<h1>Ingreso de Pedido</h1>
+<ul>
+	<li>El cliente al momento de suscribirse deber&aacute; firmar las &ldquo;Condiciones Generales de Adhesi&oacute;n&rdquo; (CG) o el contrato y los siguientes anexos:
+
+		<ul>
+			<li>&bull;Prevenci&oacute;n de lavado de dinero</li>
+			<li>Bonificaciones</li>
+			<li>&bull;Seguro de vida</li>
+		</ul>
+	</li>
+	<li>La solicitud puede ser:
+
+		<ul>
+			<li>&bull;<u>Electr&oacute;nica</u>: el concesionario o VD la completan y el cliente la firma electr&oacute;nicamente; el cliente debe adjuntar una copia de su DNI.</li>
+			<li>&bull;<u>Papel</u>: el concesionario deber&aacute; enviar la primera p&aacute;gina de la solicitud + anexos firmados a Plan Ovalo + copia DNI escaneados</li>
+		</ul>
+	</li>
+	<li>La carga de la solicitud se realiza en el Backend de la web de Plan Ovalo con todos los datos requeridos: una vez que la solicitud fue enviada, ingresar&aacute; en AS400</li>
+	<li>En esta etapa, se podr&aacute; consultar en AS400 por el N&deg; de solicitud el estado de la misma:
+
+		<ul>
+			<li>&bull;<u>Ingresada OK:&nbsp;</u>Fue analizada por el &aacute;rea (Formaci&oacute;n de grupos) y se encuentra lista para formar grupo</li>
+			<li>&bull;<u>Anulada</u>
+
+				<ul>
+					<li><u>Por pedido del cliente o del concesionario fue anulada</u></li>
+					<li><u>El cliente puede renunciar a la solicitud hasta tanto la misma no haya formado grupo</u></li>
+					<li><u>La administradora tiene hasta 90 d&iacute;as para formar grupo</u></li>
+				</ul>
+			</li>
+			<li><u><u>Observada:&nbsp;</u></u>Tiene pendiente alguno de los requisitos informados en el primer punto y se notific&oacute; al concesionario/VD por email del inconveniente y debe solucionarlo para formar grupo</li>
+		</ul>
+	</li>
+	<li>Dentro de las CG, los datos destacados son:
+
+		<ul>
+			<li><u>Pagadero en&nbsp;</u><u>xx</u><u>&nbsp;cuotas</u>: indica la cantidad de meses en los cuales la unidad se le financiar&aacute;. Actualmente existen solamente planes de 84 cuotas. La cantidad de meses plan determina los integrantes del grupo, siendo el doble de meses plan los adherentes que forman un grupo, es decir, 168.</li>
+			<li><u>Modelo</u>: sirve para indicar el modelo que se le financiar&aacute;. Generalmente los modelos de plan son los &ldquo;Base&rdquo;; en este casillero se puede indicar el c&oacute;digo del plan al que se suscribir&aacute;, por ejemplo, &ldquo;ECO82&rdquo;</li>
+			<li><u>Valor m&oacute;vil (VM):</u> precio de la unidad al momento de la suscripci&oacute;n</li>
+			<li><u>% Al&iacute;cuota</u>: ser&aacute; el porcentaje que se le financiar&aacute; del auto en las 84 cuotas, a saber:
+
+				<ul>
+					<li>Si el plan es 100% se financiar&aacute; el 100% del auto [ &nbsp;Al&iacute;cuota = VM / meses plan &nbsp;]</li>
+					<li>Si el plan es 70% se financiar&aacute; el 70% del auto, teniendo que integrar el 30% al momento de salir adjudicado [Al&iacute;cuota = VM * 0.7 / meses plan]</li>
+					<li>Si el plan es 80% se financiar&aacute; el 80% del auto, teniendo que integrar el 20% al momento de salir adjudicado [Al&iacute;cuota = VM * 0.8 / meses plan]</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><u>Para ser admitida la solicitud, la edad m&aacute;xima del suscriptor deber&aacute; ser 70 a&ntilde;os</u></li>
+</ul>
+<h1>Formacion de Grupo</h1>
+<ul>
+	<li>El proceso de formaci&oacute;n de grupo sucede una vez al mes, el d&iacute;a h&aacute;bil anterior al ultimo d&iacute;a h&aacute;bil del mes o el que la administradora estipule</li>
+	<li>&iquest;En qu&eacute; consiste?
+
+		<ul>
+			<li>Agrupar a las solicitudes ingresadas Ok cuyo modelo plan sea coincidente</li>
+			<li>Una vez ejecutado, convertimos la solicitud en un nuevo adherente: dentro de un nuevo grupo tendr&aacute; una orden determinada que puede ser de 1 a 168 en planes de 84 meses.</li>
+			<li>Cada grupo debe tener el doble de integrantes que meses plan: si un grupo tiene 84 meses plan, deber&aacute; contar con 168 adherentes</li>
+			<li>La cuota n&deg; 1 quedar&aacute; cancelada en nuestro sistema y el cliente quedar&aacute; dado de alta con el status &ldquo;Ahorrista al d&iacute;a&rdquo;</li>
+			<li>El cliente recibir&aacute; un mail de Bienvenida a Plan Ovalo en el que dej&oacute; informado en la solicitud, informando su grupo y orden y se convierte en Ahorrista</li>
+		</ul>
+	</li>
+</ul>
